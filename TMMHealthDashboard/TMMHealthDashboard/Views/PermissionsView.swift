@@ -17,7 +17,7 @@ struct PermissionsView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.1), Color.purple.opacity(0.05)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            Color.appBackground
                 .ignoresSafeArea()
             
             VStack(spacing: 35) {
@@ -63,7 +63,7 @@ struct PermissionsView: View {
                     healthServiceManager.requestPermission()
                     
                     //Wait for permission dialog to complete
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         withAnimation(.spring()) {
                             showPermissions = false
                         }
@@ -75,7 +75,7 @@ struct PermissionsView: View {
                             .fontWeight(.semibold)
                     }
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.primaryText)
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
                     .background(LinearGradient(colors: [Color.blue, Color.blue.opacity(0.8)], startPoint: .leading, endPoint: .trailing))

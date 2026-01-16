@@ -15,7 +15,7 @@ struct OnboardingView: View {
         ZStack {
             //Gradient Background
             
-            LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.3), Color.white]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: [Color(red: 0.1, green: 0.3, blue: 0.6), Color(red: 0.05, green: 0.15, blue: 0.4  )]), startPoint: .topLeading, endPoint: .bottomTrailing)
         }.ignoresSafeArea()
         
         VStack(spacing: 30) {
@@ -38,6 +38,7 @@ struct OnboardingView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, 25)
                 .padding(.bottom, 12)
+                .foregroundColor(.white)
                 
             
             //Subtitle
@@ -46,7 +47,7 @@ struct OnboardingView: View {
                 .multilineTextAlignment(.center)
                 .lineLimit(nil)
                 .fixedSize(horizontal: false, vertical: true)
-                .foregroundColor(.secondary)
+                .foregroundColor(.white.opacity(0.8))
                 .padding(.horizontal, 35)
                 .padding(.bottom, 35)
             
@@ -62,7 +63,7 @@ struct OnboardingView: View {
             
             //CTA Button
             Button(action: {
-                withAnimation(.spring(response: 0.6, dampingFraction: 0.7)) {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                     showOnboarding = false
                 }
             }) {
@@ -94,10 +95,11 @@ struct OnboardingView: View {
         var body: some View {
             HStack(spacing: 15) {
                 Image(systemName: icon)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.cyan)
                     .frame(width: 24)
                 Text(text)
                     .font(.body)
+                    .foregroundColor(.white)
             }
         }
     }

@@ -108,4 +108,104 @@ class TMMHealthServiceManager: ObservableObject {
         
         healthStore.execute(energyQuery)
     }
+    
+    //fetch last 7 days of step data
+    func fetchWeeklySteps(completion: @escaping ([DailyActivity]) -> Void) {
+        guard let stepsType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
+            completion([])
+            return
+        }
+        
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let sevenDaysAgo = calendar.date(byAdding: .day, value: -6, to: today)!
+        
+        let predicate = HKQuery.predicateForSamples(withStart: sevenDaysAgo, end: Date(), options: .strictStartDate)
+        
+        var anchorComponents = calendar.dateComponents([.year, .month, .day], from: today)
+        anchorComponents.hour = 0
+        let anchorDate = calendar.date(from: anchorComponents)!
+        
+        let daily = DateComponents(day: 1)
+        let query = HKStatisticsCollectionQuery(quantityType: stepsType, quantitySamplePredicate: predicate, options: .cumulativeSum, anchorDate: anchorDate, intervalComponents: daily)
+        
+        query.initialResultsHandler = { query, results, error in
+            guard let results = results else {
+                DispatchQueue.main.async { completion([])  }
+                return
+            }
+            
+            var dailyData: [DailyActivity] = []
+            results.enumerateStatistics(from: sevenDaysAgo, to: Date()) { statistics, stop in
+                let steps = statistics.sumQuantity()?.doubleValue(for: HKUnit.count()) ?? 0
+                let activity = DailyActivity(date: statistics.startDate, steps: steps, calories: 0)
+                dailyData.append(activity)
+            }
+            
+            DispatchQueue.main.async {
+                completion(dailyData)
+            }
+                
+        }
+        healthStore.execute(query)
+    }
+    
+    //calories 7 days data
+    func fetchWeeklyCalories(completion: @escaping ([DailyActivity]) -> Void) {
+        guard let energyType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned) else {
+            completion([])
+            return
+        }
+        
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let sevenDaysAgo = calendar.date(byAdding: .day, value: -6, to: today)!
+        
+        let predicate = HKQuery.predicateForSamples(withStart: sevenDaysAgo, end: Date(), options: .strictStartDate)
+        
+        var anchorComponents = calendar.dateComponents([.year, .month, .day], from: today)
+        anchorComponents.hour = 0
+        let anchorDate = calendar.date(from: anchorComponents)!
+        
+        let daily = DateComponents(day: 1)
+        let query = HKStatisticsCollectionQuery(quantityType: energyType, quantitySamplePredicate: predicate, options: .cumulativeSum, anchorDate: anchorDate, intervalComponents: daily)
+        
+        query.initialResultsHandler = { query, results, error in
+            guard let results = results else {
+                DispatchQueue.main.async { completion([])  }
+                return
+            }
+            
+            var dailyData: [DailyActivity] = []
+            results.enumerateStatistics(from: sevenDaysAgo, to: Date()) { statistics, stop in
+                let calories = statistics.sumQuantity()?.doubleValue(for: HKUnit.kilocalorie()) ?? 0
+                let activity = DailyActivity(date: statistics.startDate, steps: 0, calories: calories)
+                dailyData.append(activity)
+            }
+            
+            DispatchQueue.main.async {
+                completion(dailyData)
+            }
+                
+        }
+        healthStore.execute(query)
+    }
+}
+
+struct DailyActivity: Identifiable {
+    let id = UUID()
+    let date: Date
+    let steps: Double
+    let calories: Double
+    
+    var dayName: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEE"
+        return formatter.string(from: date)
+        
+    }
+    
+    var isToday: Bool {
+        return Calendar.current.isDateInToday(date)
+    }
 }
