@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3618EBF02F1972980089795A /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618EBEF2F1972980089795A /* ColorExtensions.swift */; };
+		361E583A2F1835FE009FC489 /* HealthCacheCoredataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 361E58382F1835FE009FC489 /* HealthCacheCoredataModel.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		36AA31982F0D8B580060CBA7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3618EBEF2F1972980089795A /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		361E58392F1835FE009FC489 /* HealthCacheCoredataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HealthCacheCoredataModel.xcdatamodel; sourceTree = "<group>"; };
 		36AA318A2F0D8B550060CBA7 /* TMMHealthDashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMMHealthDashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36AA31972F0D8B580060CBA7 /* TMMHealthDashboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMMHealthDashboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36AA31A12F0D8B580060CBA7 /* TMMHealthDashboardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMMHealthDashboardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +82,8 @@
 		36AA31812F0D8B550060CBA7 = {
 			isa = PBXGroup;
 			children = (
+				3618EBEF2F1972980089795A /* ColorExtensions.swift */,
+				361E58382F1835FE009FC489 /* HealthCacheCoredataModel.xcdatamodeld */,
 				36AA318C2F0D8B550060CBA7 /* TMMHealthDashboard */,
 				36AA319A2F0D8B580060CBA7 /* TMMHealthDashboardTests */,
 				36AA31A42F0D8B580060CBA7 /* TMMHealthDashboardUITests */,
@@ -236,6 +245,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				361E583A2F1835FE009FC489 /* HealthCacheCoredataModel.xcdatamodeld in Sources */,
+				3618EBF02F1972980089795A /* ColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +409,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Wellness;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need to access to your health data to show your daily steps and active energy.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app does not write health data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -428,6 +440,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Wellness;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need to access to your health data to show your daily steps and active energy.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app does not write health data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -556,6 +569,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		361E58382F1835FE009FC489 /* HealthCacheCoredataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				361E58392F1835FE009FC489 /* HealthCacheCoredataModel.xcdatamodel */,
+			);
+			currentVersion = 361E58392F1835FE009FC489 /* HealthCacheCoredataModel.xcdatamodel */;
+			path = HealthCacheCoredataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 36AA31822F0D8B550060CBA7 /* Project object */;
 }
