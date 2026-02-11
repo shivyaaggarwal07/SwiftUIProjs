@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>themoviedb.org</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<false/>
+				<key>NSTemporaryExceptionMinimumTLSVersion</key>
+				<string>TLSv1.2</string>
+				<key>NSTemporaryExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+		</dict>
+	</dict>
+	<key>TMDB_API_KEY</key>
+	<string>aeb5b63ea2462f25443be36cbd1344d1</string>
+	<key>TMDB_READ_ACCESS_TOKEN</key>
+	<string>eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZWI1YjYzZWEyNDYyZjI1NDQzYmUzNmNiZDEzNDRkMSIsIm5iZiI6MTY3NzA0NjEyMi44NTc5OTk4LCJzdWIiOiI2M2Y1YjE2YWZjMzFkMzAwODUwYmQyOGQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.Fww1pKrUiwljF1YQvQyIQwej5K27AxD9t68yM8jUdZw</string>
+</dict>
+</plist>
