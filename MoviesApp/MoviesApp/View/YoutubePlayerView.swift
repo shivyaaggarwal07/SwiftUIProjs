@@ -11,7 +11,7 @@ import WebKit
 struct YouTubePlayerView: UIViewRepresentable {
     let videoKey: String
     var autoplay: Bool = false
-    var muted: Bool = true    // if autoplay, keep muted = true for iOS
+    var muted: Bool = true
     
     func makeUIView(context: Context) -> WKWebView {
         let config = WKWebViewConfiguration()
@@ -32,7 +32,6 @@ struct YouTubePlayerView: UIViewRepresentable {
             return
         }
         
-        // Build embed URL
         var params = ["playsinline=1", "modestbranding=1", "rel=0"]
         if autoplay { params.append("autoplay=1") }
         if muted { params.append("mute=1") }
@@ -40,8 +39,7 @@ struct YouTubePlayerView: UIViewRepresentable {
         let urlString = "https://www.youtube.com/embed/\(videoKey)?\(query)"
         
         if let current = webview.url?.absoluteString, current == urlString {
-            // No need to reload if same
-            return
+             return
         }
         
         if let url = URL(string: urlString) {

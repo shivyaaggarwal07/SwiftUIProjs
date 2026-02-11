@@ -108,7 +108,6 @@ struct MovieRow: View {
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
 
-                // If you want duration on list, you’d need an extra details fetch or cache. Optional for Home.
             }
         }
         .padding(.vertical, 6)

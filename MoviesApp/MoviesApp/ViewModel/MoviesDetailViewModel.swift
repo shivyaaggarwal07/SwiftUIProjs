@@ -27,7 +27,6 @@ final class MovieDetailViewModel: ObservableObject {
             do {
                 let d: MovieDetails = try await client.request(TMDbEndpoint.details(id: movieId))
                 self.details = d
-                // pick a YouTube trailer if available
                 let videos: VideoResponse = try await client.request(TMDbEndpoint.videos(id: movieId))
                 self.trailerKey = videos.results.first(where: { $0.site == "YouTube" && $0.type.lowercased().contains("trailer") })?.key
             } catch {

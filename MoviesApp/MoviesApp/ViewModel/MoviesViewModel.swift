@@ -25,7 +25,6 @@ final class MoviesViewModel: ObservableObject {
     private var canLoadMoreSearch = true
     private var searchTask: Task<Void, Never>?
 
-    // Your existing popular loader (unchanged)
     func loadPopular(reset: Bool = false) {
         guard !isLoading else { return }
         if reset {
